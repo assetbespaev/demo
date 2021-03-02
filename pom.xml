@@ -53,20 +53,14 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.apache.axis</groupId>
+      <groupId>axis</groupId>
       <artifactId>axis</artifactId>
       <version>1.4</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.axis</groupId>
+      <groupId>axis</groupId>
       <artifactId>axis-jaxrpc</artifactId>
       <version>1.4</version>
-    </dependency>
-    <dependency>
-      <groupId>wsdl4j</groupId>
-      <artifactId>wsdl4j</artifactId>
-      <version>1.6.2</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -94,11 +88,12 @@
           <sourceDirectory>${project.basedir}/src/main/resources/wsdl</sourceDirectory>
           <!-- The list of WSDL files: -->
           <wsdlFiles>
-            <wsdlFile>aaa.wsdl</wsdlFile>
+            <wsdlFile>fdms.wsdl</wsdlFile>
           </wsdlFiles>
           <allElements>true</allElements>
           <!-- Where you want the generated files: -->
           <outputDirectory>${project.build.directory}/generated-sources/fdms</outputDirectory>
+          <useEmitter>true</useEmitter>
         </configuration>
         <executions>
           <execution>
