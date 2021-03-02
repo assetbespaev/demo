@@ -6,7 +6,6 @@ import com.example.demo.wsdl.AxessPortType;
 import com.example.demo.wsdl.ChangePasswordByLoginResultStruct;
 import com.example.demo.wsdl.ChangePasswordByLoginResultStructCode;
 import java.rmi.RemoteException;
-import javax.xml.rpc.Stub;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

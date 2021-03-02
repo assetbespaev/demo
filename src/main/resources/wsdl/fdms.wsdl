@@ -1,11 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<wsdl:definitions xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
-  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns='http://schemas.xmlsoap.org/wsdl/'
-  name='AxessInterface'
-  xmlns:xsd='http://www.w3.org/2001/XMLSchema' targetNamespace='urn:AxessInterface'
-  xmlns:typens='urn:AxessInterface'>
+<wsdl:definitions xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns='http://schemas.xmlsoap.org/wsdl/' name='AxessInterface' xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsd='http://www.w3.org/2001/XMLSchema' targetNamespace='urn:AxessInterface' xmlns:typens='urn:AxessInterface'>
   <wsdl:types>
-    <xsd:schema targetNamespace='urn:AxessInterface' elementFormDefault='qualified'>
+    <xsd:schema targetNamespace='urn:AxessInterface'>
       <xsd:complexType name='KeyValueStruct'>
         <xsd:sequence>
           <xsd:element type='xsd:string' name='key'/>
@@ -49,48 +45,20 @@
           <xsd:element type='xsd:int' name='TaskId' minOccurs='0'/>
         </xsd:sequence>
       </xsd:complexType>
-      <xsd:element name='StartChangePasswordByLogin'>
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element type='xsd:string' name='Login'/>
-            <xsd:element type='xsd:string' name='Password'/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name='StartChangePasswordByLoginResponse'>
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element type='typens:StartCPETaskResultStruct' name='Result'/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name='ChangePasswordByLoginResult'>
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element type='xsd:int' name='TaskId'/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name='ChangePasswordByLoginResultResponse'>
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element type='typens:ChangePasswordByLoginResultStruct' name='Result'/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name='StartChangePasswordByLoginMessage'>
-    <wsdl:part name='body' element='typens:StartChangePasswordByLogin'/>
+    <wsdl:part type='xsd:string' name='Login'/>
+    <wsdl:part type='xsd:string' name='Password'/>
   </wsdl:message>
   <wsdl:message name='StartChangePasswordByLoginResponseMessage'>
-    <wsdl:part name='body' element='typens:StartChangePasswordByLoginResponse'/>
+    <wsdl:part type='typens:StartCPETaskResultStruct' name='Result'/>
   </wsdl:message>
   <wsdl:message name='ChangePasswordByLoginResultMessage'>
-    <wsdl:part name='body' element='typens:ChangePasswordByLoginResult'/>
+    <wsdl:part type='xsd:int' name='TaskId'/>
   </wsdl:message>
   <wsdl:message name='ChangePasswordByLoginResultResponseMessage'>
-    <wsdl:part name='body' element='typens:ChangePasswordByLoginResultResponse'/>
+    <wsdl:part type='typens:ChangePasswordByLoginResultStruct' name='Result'/>
   </wsdl:message>
   <wsdl:portType name='axessPortType'>
     <wsdl:operation name='StartChangePasswordByLogin'>
@@ -103,30 +71,29 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding type='typens:axessPortType' name='axessSOAP11Binding'>
-    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/>
     <wsdl:operation name='StartChangePasswordByLogin'>
-      <soap:operation soapAction='urn:StartChangePasswordByLogin '/>
+      <soap:operation soapAction='urn:StartChangePasswordByLogin' style='rpc'/>
       <wsdl:input>
-        <soap:body use='literal'/>
+        <soap:body use='encoded' namespace='urn:AxessInterface' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use='literal'/>
+        <soap:body use='encoded' namespace='urn:AxessInterface' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name='ChangePasswordByLoginResult'>
-      <soap:operation soapAction='urn:ChangePasswordByLoginResult'/>
+      <soap:operation soapAction='urn:ChangePasswordByLoginResult' style='rpc'/>
       <wsdl:input>
-        <soap:body use='literal'/>
+        <soap:body use='encoded' namespace='urn:AxessInterface' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use='literal'/>
+        <soap:body use='encoded' namespace='urn:AxessInterface' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name='axess'>
     <wsdl:port binding='typens:axessSOAP11Binding' name='axessSOAP11Port'>
-      <soap:address
-        location='http://172.28.27.5:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP/document_literal'/>
+      <soap:address location='http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP'/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

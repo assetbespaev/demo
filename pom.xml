@@ -17,6 +17,7 @@
   <properties>
     <java.version>1.8</java.version>
     <cxf.version>3.4.2</cxf.version>
+    <axis.version>1.4</axis.version>
   </properties>
   <dependencies>
     <dependency>
@@ -55,12 +56,12 @@
     <dependency>
       <groupId>axis</groupId>
       <artifactId>axis</artifactId>
-      <version>1.4</version>
+      <version>${axis.version}</version>
     </dependency>
     <dependency>
       <groupId>axis</groupId>
       <artifactId>axis-jaxrpc</artifactId>
-      <version>1.4</version>
+      <version>${axis.version}</version>
     </dependency>
   </dependencies>
 
