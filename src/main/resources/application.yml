@@ -1,0 +1,9 @@
+# Spring and other bootstrap configs
+
+server:
+  port: 28080
+
+fdms:
+  host: "http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP/document_literal"
+  username: "SELFCARENEW_SOAP"
+  password: "Yfpfhtyrj#4"
