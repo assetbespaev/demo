@@ -7,3 +7,17 @@ fdms:
   host: "http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP"
   username: "SELFCARENEW_SOAP"
   password: "Yfpfhtyrj#4"
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        ws:
+          server:
+            MessageTracing:
+              sent: DEBUG
+              received: TRACE
+          client:
+            MessageTracing:
+              received: TRACE

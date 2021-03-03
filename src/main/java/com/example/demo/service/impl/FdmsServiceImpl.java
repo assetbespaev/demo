@@ -1,29 +1,25 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.FdmsChangePasswordByLoginResponse;
 import com.example.demo.service.FdmsService;
-import com.example.demo.wsdl.AxessPortType;
-import com.example.demo.wsdl.ChangePasswordByLoginResultStruct;
+import com.example.demo.wsdl.ChangePasswordByLoginResult;
+import com.example.demo.wsdl.ObjectFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Service
 @RequiredArgsConstructor
 public class FdmsServiceImpl implements FdmsService {
 
-  private final AxessPortType axessPortType;
+  private final WebServiceTemplate template;
 
   @Override
-  public FdmsChangePasswordByLoginResponse changePasswordByLoginResult(int taskId) {
+  public Object changePasswordByLoginResult(int taskId) {
+    ObjectFactory factory = new ObjectFactory();
+    ChangePasswordByLoginResult request = factory.createChangePasswordByLoginResult();
+    request.setTaskId(taskId);
 
-    ChangePasswordByLoginResultStruct struct = axessPortType
-        .changePasswordByLoginResult(taskId);
-
-    return FdmsChangePasswordByLoginResponse.builder()
-        .code(struct.getCode())
-        .message(struct.getMessage())
-        .result(struct.getResult())
-        .build();
+    return template.marshalSendAndReceive(request);
   }
 }
 

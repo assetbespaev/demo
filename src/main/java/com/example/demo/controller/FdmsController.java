@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.FdmsService;
-import java.rmi.RemoteException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,7 @@ public class FdmsController {
   private final FdmsService service;
 
   @GetMapping("/result")
-  public ResponseEntity changePasswordByLoginResult(@RequestParam("taskId") Integer taskId)
-      throws RemoteException {
+  public ResponseEntity changePasswordByLoginResult(@RequestParam("taskId") Integer taskId) {
     return ResponseEntity.ok(service.changePasswordByLoginResult(taskId));
   }
 }
