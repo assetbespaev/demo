@@ -1,10 +1,9 @@
 package com.example.demo.config;
 
 import com.example.demo.wsdl.Axess;
-import com.example.demo.wsdl.AxessLocator;
 import com.example.demo.wsdl.AxessPortType;
-import javax.xml.rpc.ServiceException;
-import javax.xml.rpc.Stub;
+import java.util.Map;
+import javax.xml.ws.BindingProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,14 +21,16 @@ public class FdmsConfig {
   private String password;
 
   @Bean
-  public AxessPortType axessPortType() throws ServiceException {
-    Axess axess = new AxessLocator();
-    AxessPortType portType = axess.getaxessSOAP11Port();
+  public AxessPortType axessPortType() {
+    Axess axess = new Axess();
+    AxessPortType portType = axess.getAxessSOAP11Port();
 
-    Stub stub = (Stub) portType;
-    stub._setProperty(Stub.ENDPOINT_ADDRESS_PROPERTY, host);
-    stub._setProperty(Stub.USERNAME_PROPERTY, username);
-    stub._setProperty(Stub.PASSWORD_PROPERTY, password);
+    BindingProvider provider = (BindingProvider) portType;
+    Map<String, Object> requestContext = provider.getRequestContext();
+    requestContext.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, host);
+    requestContext.put(BindingProvider.USERNAME_PROPERTY, username);
+    requestContext.put(BindingProvider.PASSWORD_PROPERTY, password);
+
     return portType;
   }
 
