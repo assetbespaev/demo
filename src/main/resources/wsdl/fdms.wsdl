@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<wsdl:definitions xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns='http://schemas.xmlsoap.org/wsdl/' name='AxessInterface' xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsd='http://www.w3.org/2001/XMLSchema' targetNamespace='urn:AxessInterface' xmlns:typens='urn:AxessInterface'>
+<wsdl:definitions xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+  xmlns='http://schemas.xmlsoap.org/wsdl/'
+  name='AxessInterface'
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema' targetNamespace='urn:AxessInterface'
+  xmlns:typens='urn:AxessInterface'>
   <wsdl:types>
     <xsd:schema targetNamespace='urn:AxessInterface' elementFormDefault='qualified'>
       <xsd:complexType name='KeyValueStruct'>
@@ -121,7 +127,8 @@
   </wsdl:binding>
   <wsdl:service name='axess'>
     <wsdl:port binding='typens:axessSOAP11Binding' name='axessSOAP11Port'>
-      <soap:address location='http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/document_literal/SOAP'/>
+      <soap:address
+        location='http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/document_literal/SOAP'/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

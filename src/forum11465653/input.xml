@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsd3="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi3="http://www.w3.org/2001/XMLSchema-instance" >
+  <SOAP-ENV:Body xmlns="urn:AxessInterface">
+    <ChangePasswordByLoginResultResponse >
+      <Code xsi3:type="xsd3:int">500</Code>
+      <Result>
+        <Code xsi3:type="xsd3:int">500</Code>
+        <Message xsi3:type="xsd3:string">Error by getting result: Ticket with id: 10 was not found
+        </Message>
+        <Result xsi3:type="xsd3:string"/>
+      </Result>
+    </ChangePasswordByLoginResultResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,8 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+    <ns2:ChangePasswordByLoginResult xmlns:ns2="urn:AxessInterface">
+      <ns2:TaskId>10</ns2:TaskId>
+    </ns2:ChangePasswordByLoginResult>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
