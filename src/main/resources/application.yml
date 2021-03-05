@@ -21,3 +21,4 @@ logging:
           client:
             MessageTracing:
               received: TRACE
+              sent: TRACE

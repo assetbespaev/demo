@@ -86,7 +86,7 @@
               <goal>xjc</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}/generated-sources/fdms</outputDirectory>
+              <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
               <packageName>${fdms.package}</packageName>
               <wsdl>true</wsdl>
               <xmlschema>false</xmlschema>
