@@ -21,6 +21,7 @@ public class FdmsServiceImpl implements FdmsService {
 
     ChangePasswordByLoginResultStruct struct = axessPortType
         .changePasswordByLoginResult(taskId);
+    System.out.println(struct);
     ChangePasswordByLoginResultStructCode code = struct.getCode();
 
     return FdmsChangePasswordByLoginResponse.builder()
