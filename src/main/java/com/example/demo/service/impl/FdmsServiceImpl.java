@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.FdmsChangePasswordByLoginResponse;
+import com.example.demo.dto.FdmsChangePasswordByLoginResponse.FdmsChangePasswordByLoginResponseBuilder;
 import com.example.demo.service.FdmsService;
 import com.example.demo.wsdl.AxessPortType;
 import com.example.demo.wsdl.ChangePasswordByLoginResultStruct;
@@ -23,12 +24,15 @@ public class FdmsServiceImpl implements FdmsService {
         .changePasswordByLoginResult(taskId);
     System.out.println(struct);
     ChangePasswordByLoginResultStructCode code = struct.getCode();
-
-    return FdmsChangePasswordByLoginResponse.builder()
-        .code(code.getValue())
+    FdmsChangePasswordByLoginResponseBuilder result = FdmsChangePasswordByLoginResponse.builder()
         .message(struct.getMessage())
-        .result(struct.getResult())
-        .build();
+        .result(struct.getResult());
+
+    if (code != null) {
+      result.code(code.getValue());
+    }
+
+    return result.build();
   }
 }
 

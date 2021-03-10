@@ -121,7 +121,7 @@
   </wsdl:binding>
   <wsdl:service name='axess'>
     <wsdl:port binding='typens:axessSOAP11Binding' name='axessSOAP11Port'>
-      <soap:address location='http://172.28.27.2:9676/live/CPEManager/IntegrationInterfaces/SelfCare/document_literal/SOAP'/>
+      <soap:address location='http://172.28.27.5:9676/live/CPEManager/IntegrationInterfaces/SelfCare/document_literal/SOAP'/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
