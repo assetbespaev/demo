@@ -1,11 +1,10 @@
 package com.example.demo.dto;
 
-
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class FdmsChangePasswordRequest {
+public class RouterStartChangePasswordByLoginResponse {
 
   @NotBlank
   private String login;
