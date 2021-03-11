@@ -4,9 +4,15 @@ server:
   port: 28080
 
 fdms:
-  host: "http://172.28.27.5:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP"
-  username: "SELFCARENEW_SOAP"
-  password: "Yfpfhtyrj#4"
+  soap:
+    host: "http://172.28.27.5:9676/live/CPEManager/IntegrationInterfaces/SelfCare/SOAP"
+    username: "SELFCARENEW_SOAP"
+    password: "Yfpfhtyrj#4"
+
+  rest:
+    host: "http://172.28.27.5:9676/live/CPEManager/IntegrationInterfaces/SelfCare/REST"
+    username: "SELFCARENEW_SOAP"
+    password: "Yfpfhtyrj#4"
 
 logging:
   level:

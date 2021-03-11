@@ -1,31 +1,40 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.RouterStartChangePasswordByLoginResponse;
+import com.example.demo.dto.ChangePasswordByLoginResult;
+import com.example.demo.dto.ChangePasswordByLoginResultResponse;
+import com.example.demo.dto.RouterStartChangePasswordByLoginRequest;
+import com.example.demo.dto.StartChangePasswordByLogin;
+import com.example.demo.dto.StartChangePasswordByLoginResponse;
+import com.example.demo.request.FdmsRequest;
 import com.example.demo.service.FdmsService;
-import com.example.demo.wsdl.ChangePasswordByLoginResult;
-import com.example.demo.wsdl.ObjectFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Service
 @RequiredArgsConstructor
 public class FdmsServiceImpl implements FdmsService {
 
-  private final WebServiceTemplate template;
+  private final FdmsRequest fdmsRequest;
 
   @Override
-  public Object startChangePasswordByLogin(RouterStartChangePasswordByLoginResponse request) {
-    return null;
+  public StartChangePasswordByLoginResponse startChangePasswordByLogin(
+      RouterStartChangePasswordByLoginRequest request) {
+    return fdmsRequest.startChangePasswordByLogin(
+        StartChangePasswordByLogin.builder()
+            .login(request.getLogin())
+            .password(request.getPassword())
+            .build()
+    );
   }
 
   @Override
-  public Object changePasswordByLoginResult(int taskId) {
-    ObjectFactory factory = new ObjectFactory();
-    ChangePasswordByLoginResult request = factory.createChangePasswordByLoginResult();
-    request.setTaskId(taskId);
-
-    return template.marshalSendAndReceive(request);
+  public ChangePasswordByLoginResultResponse changePasswordByLoginResult(int taskId) {
+    return fdmsRequest
+        .changePasswordByLoginResult(
+            ChangePasswordByLoginResult.builder()
+                .taskId(taskId)
+                .build()
+        );
   }
 }
 

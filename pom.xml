@@ -41,17 +41,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web-services</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
     </dependency>
   </dependencies>
 
@@ -68,28 +58,6 @@
             </exclude>
           </excludes>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxb2-maven-plugin</artifactId>
-        <version>1.6</version>
-        <executions>
-          <execution>
-            <id>generate-sri-autorizacion-comprobantes</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>xjc</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/generated-sources/fdms</outputDirectory>
-              <packageName>${fdms.package}</packageName>
-              <wsdl>true</wsdl>
-              <xmlschema>false</xmlschema>
-              <schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
-              <schemaFiles>fdms.wsdl</schemaFiles>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
