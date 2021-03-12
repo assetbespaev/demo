@@ -25,7 +25,7 @@ public class ChangePasswordController {
   }
 
   @GetMapping("/result")
-  public ResponseEntity changePasswordResult(@RequestParam("taskId") Integer taskId) {
+  public ResponseEntity changePasswordResult(@RequestParam("taskId") int taskId) {
     return ResponseEntity.ok(changePasswordService.changePasswordResult(taskId));
   }
 }

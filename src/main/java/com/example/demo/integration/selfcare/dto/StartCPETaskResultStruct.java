@@ -15,5 +15,5 @@ public class StartCPETaskResultStruct {
   private String message;
 
   @JsonAlias("TaskId")
-  private Integer taskId;
+  private int taskId;
 }

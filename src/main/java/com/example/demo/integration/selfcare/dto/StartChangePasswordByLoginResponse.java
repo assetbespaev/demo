@@ -1,12 +1,15 @@
 package com.example.demo.integration.selfcare.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString
-public class StartChangePasswordByLoginResponse {
+@JsonInclude(Include.NON_NULL)
+public class StartChangePasswordByLoginResponse extends BaseChangePasswordByLoginResponse {
 
   @JsonAlias("Result")
   private StartCPETaskResultStruct result;
