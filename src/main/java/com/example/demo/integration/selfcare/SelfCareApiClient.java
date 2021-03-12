@@ -1,10 +1,13 @@
-package com.example.demo.request;
+package com.example.demo.integration.selfcare;
 
-import com.example.demo.dto.ChangePasswordByLoginResult;
-import com.example.demo.dto.ChangePasswordByLoginResultResponse;
-import com.example.demo.dto.StartChangePasswordByLogin;
-import com.example.demo.dto.StartChangePasswordByLoginResponse;
+import com.example.demo.config.WebClientBuilderWrapper;
+import com.example.demo.integration.selfcare.dto.ChangePasswordByLoginResult;
+import com.example.demo.integration.selfcare.dto.ChangePasswordByLoginResultResponse;
+import com.example.demo.integration.selfcare.dto.StartChangePasswordByLogin;
+import com.example.demo.integration.selfcare.dto.StartChangePasswordByLoginResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -12,9 +15,19 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
 @RequiredArgsConstructor
-public class FdmsRequest {
+public class SelfCareApiClient {
 
-  private final WebClient webClient;
+  private final SelfCareConfig config;
+  private WebClient webClient;
+
+  @Autowired
+  private void setWebClient(WebClientBuilderWrapper wrapper) {
+    webClient = wrapper.host(config.getHost()).defaultHeaders(this::headers).build();
+  }
+
+  private void headers(HttpHeaders headers) {
+    headers.setBasicAuth(config.getUsername(), config.getPassword());
+  }
 
   public StartChangePasswordByLoginResponse startChangePasswordByLogin(
       StartChangePasswordByLogin request) {

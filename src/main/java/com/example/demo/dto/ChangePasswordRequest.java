@@ -2,9 +2,11 @@ package com.example.demo.dto;
 
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
-public class RouterStartChangePasswordByLoginResponse {
+@ToString
+public class ChangePasswordRequest {
 
   @NotBlank
   private String login;
