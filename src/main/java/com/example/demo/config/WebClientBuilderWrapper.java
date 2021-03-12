@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -23,8 +24,8 @@ public class WebClientBuilderWrapper {
     HttpClient httpClient = HttpClient.create()
         .doOnConnected(
             conn -> conn.addHandlerLast(new ReadTimeoutHandler(timeout, TimeUnit.MILLISECONDS)))
-        /*.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
-        .responseTimeout(Duration.ofMillis(5000))
+        .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+        /*.responseTimeout(Duration.ofMillis(5000))
         .doOnConnected(conn ->
             conn.addHandlerLast(new ReadTimeoutHandler(5000, TimeUnit.MILLISECONDS))
                 .addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS)))*/;
